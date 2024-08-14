@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { FaGoogle } from "react-icons/fa";
+import useAuth from "../../hooks/useAuth";
+import {  toast } from 'react-toastify';
 
-
-
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -14,6 +15,10 @@ import { FaGoogle } from "react-icons/fa";
 
 const SignUp = () => {
     const [showPass, setShowPass] = useState(false);
+    const navigate = useNavigate();
+
+
+    const { createUser } = useAuth();
 
     const {
         register,
@@ -25,6 +30,21 @@ const SignUp = () => {
     const onSubmit = (data) => {
         // console.log(data);
         console.log(data);
+
+
+        createUser(data.email, data.password)
+            .then((result) => {
+                console.log(result.user);
+                toast.success("Sign up Successfully");
+                reset();
+                navigate('/login');
+            })
+            .catch((error) => {
+                // console.log(error.message);
+                toast.error(error.message.replace('auth/', ''));
+            })
+
+
 
     }
 
