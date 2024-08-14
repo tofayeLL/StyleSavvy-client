@@ -1,17 +1,21 @@
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
+import useAuth from "../../hooks/useAuth";
+import {  toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
 
-
-
-
-
     const [showPass, setShowPass] = useState(false);
+
+    const {logInUser} = useAuth();
+
+    const navigate = useNavigate();
 
     const {
         register,
@@ -23,6 +27,22 @@ const Login = () => {
     const onSubmit = (data) => {
         // console.log(data);
         console.log(data);
+
+        // login user authentication
+        logInUser(data.email, data.password)
+        .then((result) => {
+            // console.log(result.user);
+            toast.success("Login Successfully");
+            reset();
+            navigate('/')
+            
+        })
+        .catch((error) => {
+            // console.log(error.message);
+            toast.error(error.message.replace('auth/', 'userEmail or password-').replace('-credential', ''));
+        })
+
+
 
     }
 
