@@ -2,10 +2,15 @@
 
 const Home = () => {
     return (
-        <div>
-            <h1>I am from home</h1>
-            
-        </div>
+        <section className="py-20">
+            <div className="bg-slate-200 py-2">
+                <h1>i AM FROM HOME</h1>
+
+            </div>
+
+
+
+        </section>
     );
 };
 
