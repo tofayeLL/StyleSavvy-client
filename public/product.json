@@ -1,0 +1,402 @@
+[
+    {
+        "productName": "Slim Fit Shirt",
+        "productImage": "https://i.ibb.co/64Chg2G/slim-fit-shirt-2.jpg",
+        "brandName": "Zara",
+        "description": "A classic slim fit shirt perfect for any occasion.",
+        "price": 120,
+        "category": "Shirt",
+        "ratings": 4,
+        "createdDate": "08-08-2024"
+    },
+    {
+        "productName": "Casual Check Shirt",
+        "productImage": "https://i.ibb.co/nRXcVvG/check-shirt.jpg",
+        "brandName": "Zara",
+        "description": "Comfortable checkered shirt for casual wear.",
+        "price": 95,
+        "category": "Shirt",
+        "ratings": 5,
+        "createdDate": "25-07-2024"
+    },
+    {
+        "productName": "Formal White Shirt",
+        "productImage": "https://i.ibb.co/Nj9p9Rb/formal-white-shirt2.jpg",
+        "brandName": "Zara",
+        "description": "Elegant white shirt ideal for formal events.",
+        "price": 140,
+        "category": "Shirt",
+        "ratings": 4,
+        "createdDate": "12-07-2024"
+    },
+    {
+        "productName": "Oxford Button-Down Shirt",
+        "productImage": "https://i.ibb.co/Y7dwjy9/oxford-button-shirt.jpg",
+        "brandName": "Zara",
+        "description": "Classic oxford shirt with a button-down collar.",
+        "price": 110,
+        "category": "Shirt",
+        "ratings": 4,
+        "createdDate": "03-07-2024"
+    },
+    {
+        "productName": "Denim Shirt",
+        "productImage": "https://i.ibb.co/Hq1rCWV/denim-shirt.jpg",
+        "brandName": "Twelve",
+        "description": "Stylish denim shirt with a rugged look.",
+        "price": 130,
+        "category": "Shirt",
+        "ratings": 5,
+        "createdDate": "19-06-2024"
+    },
+    {
+        "productName": "Linen Shirt",
+        "productImage": "https://i.ibb.co/yV118Bg/Linen-shirt.jpg",
+        "brandName": "Twelve",
+        "description": "Lightweight linen shirt perfect for summer.",
+        "price": 125,
+        "category": "Shirt",
+        "ratings": 3,
+        "createdDate": "06-06-2024"
+    },
+    {
+        "productName": "Floral Print Shirt",
+        "productImage": "https://i.ibb.co/VWtgdv1/Floral-Print-Shirt.jpg",
+        "brandName": "Twelve",
+        "description": "Bright floral print shirt for a bold look.",
+        "price": 115,
+        "category": "Shirt",
+        "ratings": 4,
+        "createdDate": "23-05-2024"
+    },
+    {
+        "productName": "Striped Shirt",
+        "productImage": "https://i.ibb.co/py9dMPh/Striped-Shirtjpg.jpg",
+        "brandName": "Twelve",
+        "description": "Smart striped shirt for both work and play.",
+        "price": 135,
+        "category": "Shirt",
+        "ratings": 4,
+        "createdDate": "10-05-2024"
+    },
+    {
+        "productName": "Plaid Shirt",
+        "productImage": "https://i.ibb.co/v4qhd6p/Plaid-Shirt.jpg",
+        "brandName": "Twelve",
+        "description": "Comfortable plaid shirt with a modern cut.",
+        "price": 90,
+        "category": "Shirt",
+        "ratings": 3,
+        "createdDate": "27-04-2024"
+    },
+    {
+        "productName": "Chambray Shirt",
+        "productImage": "https://i.ibb.co/jgR070h/Chambray-Shirt.jpg",
+        "brandName": "Twelve",
+        "description": "Soft chambray shirt with a tailored fit.",
+        "price": 125,
+        "category": "Shirt",
+        "ratings": 5,
+        "createdDate": "15-04-2024"
+    },
+    {
+        "productName": "Graphic Tee",
+        "productImage": "https://i.ibb.co/fxG2Rrt/Graphic-Tee.jpg",
+        "brandName": "Tanjim",
+        "description": "Cool graphic t-shirt for casual wear.",
+        "price": 50,
+        "category": "T-shirt",
+        "ratings": 4,
+        "createdDate": "04-04-2024"
+    },
+    {
+        "productName": "Plain White Tee",
+        "productImage": "https://i.ibb.co/HFkc2WL/Plain-White-Tee.jpg",
+        "brandName": "Tanjim",
+        "description": "Classic plain white t-shirt, a wardrobe staple.",
+        "price": 35,
+        "category": "T-shirt",
+        "ratings": 5,
+        "createdDate": "19-03-2024"
+    },
+    {
+        "productName": "Vintage Print Tee",
+        "productImage": "https://i.ibb.co/SVKHK27/Vintage-Print-Tee.jpg",
+        "brandName": "Tanjim",
+        "description": "Vintage-inspired t-shirt with a unique print.",
+        "price": 45,
+        "category": "T-shirt",
+        "ratings": 4,
+        "createdDate": "01-03-2024"
+    },
+    {
+        "productName": "Striped Tee",
+        "productImage": "https://i.ibb.co/6bgshQ3/Striped-Tee.jpg",
+        "brandName": "Supreme",
+        "description": "Comfortable striped t-shirt for everyday wear.",
+        "price": 55,
+        "category": "T-shirt",
+        "ratings": 3,
+        "createdDate": "16-02-2024"
+    },
+    {
+        "productName": "Pocket Tee",
+        "productImage": "https://i.ibb.co/fqJ4y9X/Pocket-Tee.jpg",
+        "brandName": "Supreme",
+        "description": "Simple t-shirt with a chest pocket for added style.",
+        "price": 40,
+        "category": "T-shirt",
+        "ratings": 4,
+        "createdDate": "02-02-2024"
+    },
+    {
+        "productName": "Long Sleeve Tee",
+        "productImage": "https://i.ibb.co/6DJcf6x/Long-Sleeve-Tee.jpg",
+        "brandName": "Supreme",
+        "description": "Comfortable long sleeve t-shirt for cooler days.",
+        "price": 60,
+        "category": "T-shirt",
+        "ratings": 5,
+        "createdDate": "18-01-2024"
+    },
+    {
+        "productName": "V-Neck Tee",
+        "productImage": "https://i.ibb.co/VDgY1H6/V-Neck-Tee.jpg",
+        "brandName": "Tanjim",
+        "description": "Stylish V-neck t-shirt with a relaxed fit.",
+        "price": 45,
+        "category": "T-shirt",
+        "ratings": 3,
+        "createdDate": "05-11-2024"
+    },
+    {
+        "productName": "Henley Tee",
+        "productImage": "https://i.ibb.co/3kF2RRC/Henley-Tee.jpg",
+        "brandName": "Supreme",
+        "description": "Classic Henley t-shirt with buttoned placket.",
+        "price": 50,
+        "category": "T-shirt",
+        "ratings": 5,
+        "createdDate": "24-10-2024"
+    },
+    {
+        "productName": "Raglan Tee",
+        "productImage": "https://i.ibb.co/pQGBxMw/Raglan-Tee.jpg",
+        "brandName": "Tanjim",
+        "description": "Comfortable Raglan t-shirt with contrast sleeves.",
+        "price": 55,
+        "category": "T-shirt",
+        "ratings": 4,
+        "createdDate": "12-10-2024"
+    },
+    {
+        "productName": "Graphic Print Tee",
+        "productImage": "https://i.ibb.co/vv9JSRC/graphic-pint-tee.jpg",
+        "brandName": "Supreme",
+        "description": "Bold graphic print t-shirt for a statement look.",
+        "price": 50,
+        "category": "T-shirt",
+        "ratings": 5,
+        "createdDate": "30-09-2024"
+    },
+    {
+        "productName": "Running Shoes",
+        "productImage": "https://i.ibb.co/HxwDWJt/Running-Shoes2.jpg",
+        "brandName": "Adidas",
+        "description": "Lightweight running shoes for daily workouts.",
+        "price": 100,
+        "category": "Shoes",
+        "ratings": 4,
+        "createdDate": "17-09-2024"
+    },
+    {
+        "productName": "Basketball Shoes",
+        "productImage": "https://i.ibb.co/fQpr4q2/Basketball-Shoes.jpg",
+        "brandName": "Adidas",
+        "description": "High-performance basketball shoes for court action.",
+        "price": 140,
+        "category": "Shoes",
+        "ratings": 5,
+        "createdDate": "04-09-2024"
+    },
+    {
+        "productName": "Casual Sneakers",
+        "productImage": "https://i.ibb.co/cNN372L/Casual-Sneakers.jpg",
+        "brandName": "Nike",
+        "description": "Stylish casual sneakers for everyday wear.",
+        "price": 90,
+        "category": "Shoes",
+        "ratings": 4,
+        "createdDate": "22-08-2024"
+    },
+    {
+        "productName": "Training Shoes",
+        "productImage": "https://i.ibb.co/NKQScgG/Training-Shoes.jpg",
+        "brandName": "Nike",
+        "description": "Durable training shoes for intense workouts.",
+        "price": 110,
+        "category": "Shoes",
+        "ratings": 3,
+        "createdDate": "09-08-2024"
+    },
+    {
+        "productName": "High-Top Sneakers",
+        "productImage": "https://i.ibb.co/Nrzqz8C/High-Top-Sneakers.jpg",
+        "brandName": "Nike",
+        "description": "Trendy high-top sneakers for a stylish look.",
+        "price": 120,
+        "category": "Shoes",
+        "ratings": 4,
+        "createdDate": "28-07-2024"
+    },
+    {
+        "productName": "Running Shoes",
+        "productImage": "https://i.ibb.co/BsxJrsd/Running-Shoes.jpg",
+        "brandName": "Adidas",
+        "description": "Comfortable running shoes with great support.",
+        "price": 130,
+        "category": "Shoes",
+        "ratings": 5,
+        "createdDate": "02-07-2024"
+    },
+    {
+        "productName": "Slip-On Shoes",
+        "productImage": "https://i.ibb.co/0h3GN1j/Slip-On-Shoes.jpg",
+        "brandName": "Nike",
+        "description": "Easy slip-on shoes for quick and comfortable wear.",
+        "price": 80,
+        "category": "Shoes",
+        "ratings": 3,
+        "createdDate": "06-06-2024"
+    },
+    {
+        "productName": "Casual Loafers",
+        "productImage": "https://i.ibb.co/d0KCZ88/Casual-Loafers.jpg",
+        "brandName": "Adidas",
+        "description": "Smart casual loafers for a relaxed yet stylish look.",
+        "price": 75,
+        "category": "Shoes",
+        "ratings": 4,
+        "createdDate": "06-06-2024"
+    },
+    {
+        "productName": "Sports Sandals",
+        "productImage": "https://i.ibb.co/Czg3kn8/Sports-Sandals.jpg",
+        "brandName": "Nike",
+        "description": "Comfortable sports sandals for outdoor adventures.",
+        "price": 70,
+        "category": "Shoes",
+        "ratings": 5,
+        "createdDate": "25-05-2024"
+    },
+    {
+        "productName": "Lace-Up Boots",
+        "productImage": "https://i.ibb.co/7b82k28/Lace-Up-Boots.jpg",
+        "brandName": "Adidas",
+        "description": "Rugged lace-up boots for tough terrain.",
+        "price": 145,
+        "category": "Shoes",
+        "ratings": 4,
+        "createdDate": "14-05-2024"
+    },
+    {
+        "productName": "Digital Watch",
+        "productImage": "https://i.ibb.co/qp2BB1J/digital-watch.jpg",
+        "brandName": "Casio",
+        "description": "Durable digital watch with multiple functions.",
+        "price": 85,
+        "category": "Watch",
+        "ratings": 4,
+        "createdDate": "01-05-2024"
+    },
+    {
+        "productName": "Classic Leather Watch",
+        "productImage": "https://i.ibb.co/p1sYyMp/Classic-Leather-Watch3.jpg",
+        "brandName": "Casio",
+        "description": "Elegant leather strap watch for a timeless look.",
+        "price": 120,
+        "category": "Watch",
+        "ratings": 5,
+        "createdDate": "18-04-2024"
+    },
+    {
+        "productName": "Sporty Analog Watch",
+        "productImage": "https://i.ibb.co/PFR39sR/Sporty-Analog-Watch.jpg",
+        "brandName": "Casio",
+        "description": "Rugged analog watch suitable for all sports.",
+        "price": 95,
+        "category": "Watch",
+        "ratings": 4,
+        "createdDate": "05-04-2024"
+    },
+    {
+        "productName": "Luxury Gold Watch",
+        "productImage": "https://i.ibb.co/Snncb01/Luxury-Gold-Watch2.jpg",
+        "brandName": "Chanel",
+        "description": "Luxurious gold watch with a premium design.",
+        "price": 145,
+        "category": "Watch",
+        "ratings": 5,
+        "createdDate": "22-03-2024"
+    },
+    {
+        "productName": "Minimalist Watch",
+        "productImage": "https://i.ibb.co/1s3c62Y/Minimalist-Watch.jpg",
+        "brandName": "Chanel",
+        "description": "Sleek minimalist watch with a modern aesthetic.",
+        "price": 110,
+        "category": "Watch",
+        "ratings": 3,
+        "createdDate": "12-03-2024"
+    },
+    {
+        "productName": "Chronograph Watch",
+        "productImage": "https://i.ibb.co/SXptNJZ/Chronograph-Watch.jpg",
+        "brandName": "Casio",
+        "description": "High-precision chronograph watch for accurate timekeeping.",
+        "price": 130,
+        "category": "Watch",
+        "ratings": 4,
+        "createdDate": "03-03-2024"
+    },
+    {
+        "productName": "Digital Sports Watch",
+        "productImage": "https://i.ibb.co/Ry237xY/Digital-Sports-Watch.jpg",
+        "brandName": "Casio",
+        "description": "Digital sports watch with stopwatch and timer.",
+        "price": 75,
+        "category": "Watch",
+        "ratings": 5,
+        "createdDate": "20-02-2024"
+    },
+    {
+        "productName": "Dress Watch",
+        "productImage": "https://i.ibb.co/Fn7R2Bx/Dress-Watch.jpg",
+        "brandName": "Chanel",
+        "description": "Elegant dress watch perfect for formal occasions.",
+        "price": 135,
+        "category": "Watch",
+        "ratings": 4,
+        "createdDate": "10-02-2024"
+    },
+    {
+        "productName": "Smartwatch",
+        "productImage": "https://i.ibb.co/dGkF8Yq/Smartwatch.jpg",
+        "brandName": "Casio",
+        "description": "Advanced smartwatch with fitness tracking.",
+        "price": 125,
+        "category": "Watch",
+        "ratings": 5,
+        "createdDate": "28-01-2024"
+    },
+    {
+        "productName": "Designer Watch",
+        "productImage": "https://i.ibb.co/5BzKPgY/Designer-Watch.jpg",
+        "brandName": "Chanel",
+        "description": "Exclusive designer watch with a unique style.",
+        "price": 140,
+        "category": "Watch",
+        "ratings": 4,
+        "createdDate": "15-01-2024"
+    }
+]
