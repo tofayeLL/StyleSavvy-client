@@ -4,9 +4,11 @@ import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import GoogleLogin from "../../Components/SocialLogin/GoogleLogin";
+
 
 
 
@@ -85,7 +87,7 @@ const SignUp = () => {
                             <label className="label font-semibold">
                                 <span className="label-text">User Email</span>
                             </label>
-                            <input type="email"    {...register("email", { required: true })} name="email" placeholder="Your Email" className="input input-bordered" />
+                            <input type="email" required  {...register("email", { required: true })} name="email" placeholder="Your Email" className="input input-bordered" />
                             {errors.email && <span className='text-red-400'>Email field is required</span>}
                         </div>
 
@@ -131,9 +133,10 @@ const SignUp = () => {
 
                         </div>
 
-                        <div className=" w-full mx-auto" >
 
-                            <button /* onClick={handleGoogleLogin} */ className="btn w-full  rounded-full border-2 border-black"><FaGoogle className="text-2xl text-green-400" ></FaGoogle> <span className="text-lg">Continue With Google</span></button>
+                        {/* social login */}
+                        <div>
+                            <GoogleLogin></GoogleLogin>
 
                         </div>
 
@@ -144,8 +147,14 @@ const SignUp = () => {
                             <p className="font-medium mt-6 lg:text-base text-sm mr-2">have an account ?  Please <Link to={'/login'} className="btn-active text-blue-600 btn-link">Login</Link></p>
                         </div>
 
+
+
                     </form>
+
+
                 </div>
+
+
 
 
 
