@@ -65,7 +65,7 @@ const Nav = () => {
 
                         </ul>
                     </div>
-                    <a className="btn btn-ghost lg:block hidden text-xl "><button>Daisy ui</button></a>
+                    <a className="font-bold lg:text-4xl md:text-2xl text-xl flex items-center gap-2 "><span><img src="" alt="" className="w-10  lg:inline md:inline hidden text-orange-600" /></span><span className="text-orange-600"><span className="text-white">Style</span>Savvy</span></a>
 
                 </div>
                 <a className="btn btn-ghost text-xl text-white  lg:hidden navbar-end "><button>Daisy ui</button></a>
