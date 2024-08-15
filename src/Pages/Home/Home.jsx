@@ -4,6 +4,7 @@ import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
 import { BsCurrencyDollar } from "react-icons/bs";
+import { useState } from "react";
 
 
 const Home = () => {
@@ -18,6 +19,32 @@ const Home = () => {
             return res.data;
         }, initialData: []
     })
+
+
+
+
+    // pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const usersPerPage = 8;
+
+    const totalPages = Math.ceil(allProducts.length / usersPerPage);
+
+    const indexOfLastUser = currentPage * usersPerPage;
+    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const currentUsers = allProducts.slice(indexOfFirstUser, indexOfLastUser);
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(prevPage => prevPage + 1);
+        }
+    };
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(prevPage => prevPage - 1);
+        }
+    };
+
 
 
 
@@ -55,9 +82,9 @@ const Home = () => {
 
                 <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
                     {
-                        allProducts.map((item, index) => <div key={item._id} className="flex flex-col bg-gray-100 pb-8 b border-[1px] border-slate-100 hover:shadow-xl">
+                        currentUsers.map((item, index) => <div key={item._id} className="flex flex-col bg-gray-100 pb-8 border-[1px] border-slate-100 hover:shadow-xl">
 
-                            <h4 rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum">
+                            <h4 >
                                 <img alt="" className="object-center object-cover w-full h-52 dark:bg-gray-500" src={item.productImage} />
                             </h4>
 
@@ -74,12 +101,14 @@ const Home = () => {
                                         value={item.ratings}
                                         readOnly
                                     /></span>
-                                    <span className="text-base">{item.createdDate}</span>
+                                    <span className="text-base text-blue-500">{item.category}</span>
+
                                 </div>
 
                                 <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-600">
                                     <span className="flex justify-center items-center text-2xl text-black font-semibold"><BsCurrencyDollar></BsCurrencyDollar> {item.price}</span>
-                                    <span className="text-base text-blue-500">{item.category}</span>
+                                    <span className="text-base text-blue-500">{item.createdDate}</span>
+
                                 </div>
 
 
@@ -104,10 +133,6 @@ const Home = () => {
 
 
 
-
-
-
-
             </div>
 
 
@@ -116,6 +141,29 @@ const Home = () => {
 
 
 
+            {/* pagination */}
+
+            <div className="flex justify-between mt-4 px-10">
+                <button
+                    onClick={handlePrevPage}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+                >
+                    Previous
+                </button>
+                <span>
+                    Page {currentPage} of {totalPages}
+                </span>
+                <button
+                    onClick={handleNextPage}
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+                >
+                    Next
+                </button>
+            </div>
+
+        
 
 
 
@@ -123,10 +171,7 @@ const Home = () => {
 
 
 
-
-
-
-        </section>
+        </section >
     );
 };
 
