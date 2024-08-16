@@ -4,7 +4,7 @@ import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
 import { BsCurrencyDollar } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -13,21 +13,25 @@ const Home = () => {
     const axiosPublic = useAxiosPublic();
     const [searchText, setSearchText] = useState('');
 
-
+    const [sortProduct, setSortProduct] = useState('');
 
     const [currentPage, setCurrentPage] = useState(1); // Keep track of the current page
     const [limit] = useState(8); // Number of products per page
 
-    const { data, isLoading, isError } = useQuery({
+    const { data, isLoading, isError , refetch} = useQuery({
         queryKey: ['products', currentPage, searchText],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}&search=${searchText}`);
+            const res = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}&search=${searchText}&sort=${sortProduct}`);
             return res.data;
         }, initialData: [],
         keepPreviousData: true, // Retain data from the previous page while loading new data
     });
 
     const { products: allProducts = [], totalPages } = data || {};
+
+    useEffect(() => {
+        refetch(); // Refetch data whenever sortProduct or searchText changes
+    }, [sortProduct, searchText, currentPage, refetch]);
 
 
     // page change for pagination
@@ -42,6 +46,13 @@ const Home = () => {
         setCurrentPage(1);  // Reset to the first page for a new search
     };
 
+    // sort product depends on price and date
+    const handleSort = (sort) => {
+        
+        setSortProduct(sort);
+        setCurrentPage(1); // Reset to the first page for a new sort
+    };
+
 
 
 
@@ -49,6 +60,8 @@ const Home = () => {
     return (
         <section className="py-20 ">
 
+
+            {/* search functionality implement  */}
             <div className="bg-slate-200 py-2 px-10">
 
                 <div className="text-center bg-slate-200 ">
@@ -64,23 +77,37 @@ const Home = () => {
                     </div>
 
                 </div>
+            </div>
 
 
 
 
+            <div className="flex   items-center px-10">
+
+                <details className="dropdown ">
+                    <summary className="m-1 rounded-full cursor-pointer p-2 text-lg border-2 border-gray-600 "> Sorting</summary>
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-white rounded-box w-40">
+                        <li><a onClick={() => handleSort('priceAsc')}>Low to High</a></li>
+                        <li><a onClick={() => handleSort('priceDesc')}>High to Low</a></li>
+                        <li><a onClick={() => handleSort('dateDesc')}>Date Newest First</a></li>
+                    </ul>
+                </details>
 
             </div>
 
 
+
+
+
+
+
+
+
+
+
             {/*All  products */}
             <h1>{allProducts.length}</h1>
-
-
-
             <div className="my-16 px-10 ">
-
-
-
                 <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
                     {
                         allProducts.map((item, index) => <div key={item._id} className="flex flex-col bg-gray-100 pb-8 border-[1px] border-slate-100 hover:shadow-xl">
@@ -133,8 +160,6 @@ const Home = () => {
 
 
 
-
-
                 {/* Pagination */}
                 <div className="flex justify-center mt-10">
                     <nav>
@@ -174,24 +199,6 @@ const Home = () => {
 
 
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         </section >
