@@ -5,33 +5,49 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { BsCurrencyDollar } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import useTotalProducts from "../../hooks/useTotalProducts";
 
 
 
 const Home = () => {
 
     const axiosPublic = useAxiosPublic();
+
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedBrand, setSelectedBrand] = useState('');
+
+
     const [searchText, setSearchText] = useState('');
 
     const [sortProduct, setSortProduct] = useState('');
 
-    const [currentPage, setCurrentPage] = useState(1); // Keep track of the current page
-    const [limit] = useState(8); // Number of products per page
+    // for Keep tracking current page
+    const [currentPage, setCurrentPage] = useState(1);
 
-    const { data, isLoading, isError , refetch} = useQuery({
+    // Number of products per page
+    const [limit] = useState(8);
+
+
+    const { data, isLoading, isError, refetch } = useQuery({
         queryKey: ['products', currentPage, searchText],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}&search=${searchText}&sort=${sortProduct}`);
+            const res = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}&search=${searchText}&sort=${sortProduct}&category=${selectedCategory}&brand=${selectedBrand}`);
             return res.data;
+
         }, initialData: [],
-        keepPreviousData: true, // Retain data from the previous page while loading new data
+
+        // use this for when refetch data for the new page, but the data from the previous page will remain visible until the new data is ready
+        keepPreviousData: true,
     });
 
     const { products: allProducts = [], totalPages } = data || {};
 
+
+
+    // for Refetch data whenever sortProduct or searchText or filter product changes
     useEffect(() => {
-        refetch(); // Refetch data whenever sortProduct or searchText changes
-    }, [sortProduct, searchText, currentPage, refetch]);
+        refetch();
+    }, [sortProduct, searchText, currentPage, selectedCategory, selectedBrand, refetch]);
 
 
     // page change for pagination
@@ -43,15 +59,38 @@ const Home = () => {
     // search text
     const handleSearch = (event) => {
         event.preventDefault();
-        setCurrentPage(1);  // Reset to the first page for a new search
+
+        // reset page for new search
+        setCurrentPage(1);
     };
 
     // sort product depends on price and date
     const handleSort = (sort) => {
-        
         setSortProduct(sort);
-        setCurrentPage(1); // Reset to the first page for a new sort
+
+        // reset page for new sort
+        setCurrentPage(1);
     };
+
+
+    // filter for category
+    const handleCategorySelect = (category) => {
+        setSelectedCategory(category);
+
+        // reset brand when category will change
+        setSelectedBrand('');
+
+        setCurrentPage(1);
+    };
+
+
+    // filter for brand
+    const handleBrandSelect = (brand) => {
+        setSelectedBrand(brand);
+        setCurrentPage(1);
+    };
+
+
 
 
 
@@ -59,6 +98,7 @@ const Home = () => {
 
     return (
         <section className="py-20 ">
+            {/* <h1>{totalProducts.length}</h1> */}
 
 
             {/* search functionality implement  */}
@@ -84,6 +124,7 @@ const Home = () => {
 
             <div className="flex   items-center px-10">
 
+                {/* price low and high and date newest sorting  */}
                 <details className="dropdown ">
                     <summary className="m-1 rounded-full cursor-pointer p-2 text-lg border-2 border-gray-600 "> Sorting</summary>
                     <ul className="p-2 shadow menu dropdown-content z-[1] bg-white rounded-box w-40">
@@ -92,6 +133,57 @@ const Home = () => {
                         <li><a onClick={() => handleSort('dateDesc')}>Date Newest First</a></li>
                     </ul>
                 </details>
+
+
+
+                {/* categorization */}
+                <details className="dropdown">
+                    <summary className="m-1 rounded-full cursor-pointer p-2 text-lg border-2 border-gray-600">Categorization</summary>
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-white rounded-box w-40">
+
+                        <li className="relative group">
+                            <a className="cursor-pointer" onClick={() => handleCategorySelect('Shirt')}>Shirt</a>
+                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-2 shadow bg-white rounded-box w-40">
+                                <li><a onClick={() => handleBrandSelect('Zara')}>Zara</a></li>
+                                <li><a onClick={() => handleBrandSelect('Twelve')}>Twelve</a></li>
+                            </ul>
+                        </li>
+
+                        <li className="relative group">
+                            <a onClick={() => handleCategorySelect('T-shirt')}>T-shirt</a>
+                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-2 shadow bg-white rounded-box w-40">
+                                <li><a onClick={() => handleBrandSelect('Supreme')}>Supreme</a></li>
+                                <li><a onClick={() => handleBrandSelect('Tanjim')}>Tanjim</a></li>
+                            </ul>
+                        </li>
+
+                        <li className="relative group">
+                            <a onClick={() => handleCategorySelect('Shoes')}>Shoes</a>
+
+                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-2 shadow bg-white rounded-box w-40">
+                                <li><a onClick={() => handleBrandSelect('Adidas')}>Adidas</a></li>
+                                <li><a onClick={() => handleBrandSelect('Nike')}>Nike</a></li>
+                            </ul>
+                        </li>
+
+                        <li className="relative group">
+
+                            <a className="cursor-pointer" onClick={() => handleCategorySelect('Watch')}>Watch</a>
+
+                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-2 shadow bg-white rounded-box w-40">
+                                <li><a onClick={() => handleBrandSelect('Casio')}>Casio</a></li>
+                                <li><a onClick={() => handleBrandSelect('Chanel')}>Chanel</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </details>
+
+
+
+
+
+
 
             </div>
 
