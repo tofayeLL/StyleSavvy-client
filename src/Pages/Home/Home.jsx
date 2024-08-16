@@ -7,46 +7,28 @@ import { BsCurrencyDollar } from "react-icons/bs";
 import { useState } from "react";
 
 
+
 const Home = () => {
 
     const axiosPublic = useAxiosPublic();
 
-    const { data: allProducts } = useQuery({
-        queryKey: ['products'],
+    const [currentPage, setCurrentPage] = useState(1); // Keep track of the current page
+    const [limit] = useState(8); // Number of products per page
+
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ['products', currentPage],
         queryFn: async () => {
-            const res = await axiosPublic.get('/products')
-            // console.log(res.data);
+            const res = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}`);
             return res.data;
-        }, initialData: []
-    })
+        }, initialData: [],
+        keepPreviousData: true, // Retain data from the previous page while loading new data
+    });
 
+    const { products: allProducts = [], totalPages } = data || {};
 
-
-
-    // pagination
-    const [currentPage, setCurrentPage] = useState(1);
-    const usersPerPage = 8;
-
-    const totalPages = Math.ceil(allProducts.length / usersPerPage);
-
-    const indexOfLastUser = currentPage * usersPerPage;
-    const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentUsers = allProducts.slice(indexOfFirstUser, indexOfLastUser);
-
-    const handleNextPage = () => {
-        if (currentPage < totalPages) {
-            setCurrentPage(prevPage => prevPage + 1);
-        }
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
     };
-
-    const handlePrevPage = () => {
-        if (currentPage > 1) {
-            setCurrentPage(prevPage => prevPage - 1);
-        }
-    };
-
-
-
 
 
 
@@ -55,20 +37,23 @@ const Home = () => {
     return (
         <section className="py-20 ">
 
-            <div className="bg-slate-200 py-4 px-10">
-                <div className="flex justify-between items-center ">
+            <div className="bg-slate-200 py-2 px-10">
 
-                    <div>
-                        <h4>All Categories</h4>
-                    </div>
-                    <div>
-                        <h4>search</h4>
-                    </div>
-                    <div>
-                        <h4>Sort</h4>
+                <div className="text-center bg-slate-200 ">
+                    <div className="lg:max-w-xl max-w-sm mx-auto  ">
+                        <form >
+                            <label className="input input-bordered flex rounded-full items-center  ">
+                                <input type="text" name="search" className="grow " placeholder="Search for anything" />
+                                <button className="badge badge-info py-2.5 text-black  px-2">search</button>
+                            </label>
+                        </form>
                     </div>
 
                 </div>
+
+
+
+
 
             </div>
 
@@ -76,13 +61,15 @@ const Home = () => {
             {/*All  products */}
             <h1>{allProducts.length}</h1>
 
+
+
             <div className="my-16 px-10 ">
 
 
 
                 <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
                     {
-                        currentUsers.map((item, index) => <div key={item._id} className="flex flex-col bg-gray-100 pb-8 border-[1px] border-slate-100 hover:shadow-xl">
+                        allProducts.map((item, index) => <div key={item._id} className="flex flex-col bg-gray-100 pb-8 border-[1px] border-slate-100 hover:shadow-xl">
 
                             <h4 >
                                 <img alt="" className="object-center object-cover w-full h-52 dark:bg-gray-500" src={item.productImage} />
@@ -133,6 +120,45 @@ const Home = () => {
 
 
 
+
+                {/* Pagination */}
+                <div className="flex justify-center mt-10">
+                    <nav>
+                        <ul className="flex items-center space-x-2">
+                            <li>
+                                <button
+                                    className="px-3 py-1 rounded bg-gray-200"
+                                    onClick={() => handlePageChange(currentPage - 1)}
+                                    disabled={currentPage === 1}
+                                >
+                                    Previous
+                                </button>
+                            </li>
+                            {[...Array(totalPages)].map((_, index) => (
+                                <li key={index}>
+                                    <button
+                                        className={`px-3 py-1 rounded ${index + 1 === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
+                                        onClick={() => handlePageChange(index + 1)}
+                                    >
+                                        {index + 1}
+                                    </button>
+                                </li>
+                            ))}
+                            <li>
+                                <button
+                                    className="px-3 py-1 rounded bg-gray-200"
+                                    onClick={() => handlePageChange(currentPage + 1)}
+                                    disabled={currentPage === totalPages}
+                                >
+                                    Next
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+
             </div>
 
 
@@ -141,29 +167,12 @@ const Home = () => {
 
 
 
-            {/* pagination */}
 
-            <div className="flex justify-between mt-4 px-10">
-                <button
-                    onClick={handlePrevPage}
-                    disabled={currentPage === 1}
-                    className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
-                >
-                    Previous
-                </button>
-                <span>
-                    Page {currentPage} of {totalPages}
-                </span>
-                <button
-                    onClick={handleNextPage}
-                    disabled={currentPage === totalPages}
-                    className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
-                >
-                    Next
-                </button>
-            </div>
 
-        
+
+
+
+
 
 
 
