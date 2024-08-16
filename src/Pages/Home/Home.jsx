@@ -11,14 +11,17 @@ import { useState } from "react";
 const Home = () => {
 
     const axiosPublic = useAxiosPublic();
+    const [searchText, setSearchText] = useState('');
+
+
 
     const [currentPage, setCurrentPage] = useState(1); // Keep track of the current page
     const [limit] = useState(8); // Number of products per page
 
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['products', currentPage],
+        queryKey: ['products', currentPage, searchText],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}`);
+            const res = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}&search=${searchText}`);
             return res.data;
         }, initialData: [],
         keepPreviousData: true, // Retain data from the previous page while loading new data
@@ -26,8 +29,17 @@ const Home = () => {
 
     const { products: allProducts = [], totalPages } = data || {};
 
+
+    // page change for pagination
     const handlePageChange = (page) => {
         setCurrentPage(page);
+    };
+
+
+    // search text
+    const handleSearch = (event) => {
+        event.preventDefault();
+        setCurrentPage(1);  // Reset to the first page for a new search
     };
 
 
@@ -41,9 +53,11 @@ const Home = () => {
 
                 <div className="text-center bg-slate-200 ">
                     <div className="lg:max-w-xl max-w-sm mx-auto  ">
-                        <form >
+                        <form onSubmit={handleSearch}>
                             <label className="input input-bordered flex rounded-full items-center  ">
-                                <input type="text" name="search" className="grow " placeholder="Search for anything" />
+                                <input type="text" name="search" className="grow " placeholder="Search any product" value={searchText}
+                                    onChange={(e) => setSearchText(e.target.value)}
+                                />
                                 <button className="badge badge-info py-2.5 text-black  px-2">search</button>
                             </label>
                         </form>
