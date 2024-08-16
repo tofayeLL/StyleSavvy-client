@@ -239,7 +239,7 @@ const Home = () => {
                         allProducts.map((item, index) => <div key={item._id} className="flex flex-col bg-gray-100 pb-8 border-[1px] border-slate-100 hover:shadow-xl">
 
                             <h4 >
-                                <img alt="" className="object-center object-cover w-full h-52 dark:bg-gray-500" src={item.productImage} />
+                                <img alt="" className="object-center object-cover w-full lg:h-96 h-96 dark:bg-gray-500" src={item.productImage} />
                             </h4>
 
                             <div className="flex flex-col flex-1 p-4">

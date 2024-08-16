@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import logo from '../../assets/logo/logo.png'
+import logo from '../../assets/logo/logo.png';
 
 
 
@@ -40,38 +40,15 @@ const Nav = () => {
 
 
 
-            <div className="navbar fixed z-10  bg-opacity-40   text-white  bg-[#0070dc]    py-4">
+            <div className="navbar fixed z-10  bg-opacity-40  text-white  bg-[#0070dc] py-5">
                 <div className="navbar-start">
-                    <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden ">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-8 w-8 text-white"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M4 6h16M4 12h8m-8 6h16" />
-                            </svg>
-                        </div>
-                        <ul>
-
-
-
-
-
-
-                        </ul>
-                    </div>
-                    <a className="font-bold lg:text-4xl md:text-2xl text-xl flex items-center gap-2 "><span><img src={logo} alt="logo loading.." className="w-10  lg:inline md:inline hidden text-orange-600" /></span><span className="text-orange-600"><span className="text-white">Style</span>Savvy</span></a>
+                    
+                    <a className="font-bold lg:text-4xl md:text-2xl text-xl flex items-center gap-2 "><span><img src={logo} alt="logo loading.." className="w-10  text-orange-600" /></span><span className="text-orange-600"><span className="text-white">Style</span>Savvy</span></a>
 
                 </div>
-                <a className="btn btn-ghost text-xl text-white  lg:hidden navbar-end "><button>Daisy ui</button></a>
+               
 
-                <div className="lg:navbar-end hidden lg:flex ">
+                <div className="navbar-end">
 
                     {
                         user ?
