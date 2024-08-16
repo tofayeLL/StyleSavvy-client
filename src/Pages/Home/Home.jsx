@@ -5,7 +5,7 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { BsCurrencyDollar } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import useTotalProducts from "../../hooks/useTotalProducts";
+
 
 
 
@@ -15,6 +15,8 @@ const Home = () => {
 
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedBrand, setSelectedBrand] = useState('');
+
+    const [priceRange, setPriceRange] = useState('');
 
 
     const [searchText, setSearchText] = useState('');
@@ -29,9 +31,9 @@ const Home = () => {
 
 
     const { data, isLoading, isError, refetch } = useQuery({
-        queryKey: ['products', currentPage, searchText],
+        queryKey: ['products', currentPage, searchText, priceRange],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}&search=${searchText}&sort=${sortProduct}&category=${selectedCategory}&brand=${selectedBrand}`);
+            const res = await axiosPublic.get(`/products?page=${currentPage}&limit=${limit}&search=${searchText}&sort=${sortProduct}&category=${selectedCategory}&brand=${selectedBrand}&priceRange=${priceRange}`);
             return res.data;
 
         }, initialData: [],
@@ -91,18 +93,27 @@ const Home = () => {
     };
 
 
+    // for filter by price range 
+    const handlePriceRange = (price) => {
+        setPriceRange(price);
+
+        // for reset the first page
+        setCurrentPage(1);
+    };
+
+
 
 
 
 
 
     return (
-        <section className="py-20 ">
+        <section className="pt-20 ">
             {/* <h1>{totalProducts.length}</h1> */}
 
 
             {/* search functionality implement  */}
-            <div className="bg-slate-200 py-2 px-10">
+            <div className="bg-slate-200 py-2 px-7">
 
                 <div className="text-center bg-slate-200 ">
                     <div className="lg:max-w-xl max-w-sm mx-auto  ">
@@ -122,28 +133,22 @@ const Home = () => {
 
 
 
-            <div className="flex   items-center px-10">
 
-                {/* price low and high and date newest sorting  */}
-                <details className="dropdown ">
-                    <summary className="m-1 rounded-full cursor-pointer p-2 text-lg border-2 border-gray-600 "> Sorting</summary>
-                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-white rounded-box w-40">
-                        <li><a onClick={() => handleSort('priceAsc')}>Low to High</a></li>
-                        <li><a onClick={() => handleSort('priceDesc')}>High to Low</a></li>
-                        <li><a onClick={() => handleSort('dateDesc')}>Date Newest First</a></li>
-                    </ul>
-                </details>
+            {/* All sort and filter */}
+            <div className="flex lg:flex-row flex-wrap    justify-between items-center px-7 lg:pt-16 pt-10">
+
+
 
 
 
                 {/* categorization */}
                 <details className="dropdown">
-                    <summary className="m-1 rounded-full cursor-pointer p-2 text-lg border-2 border-gray-600">Categorization</summary>
-                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-white rounded-box w-40">
+                    <summary className="m-1 rounded-full cursor-pointer p-2 text-base border-2 border-gray-600">Sort by Category and Brand Name</summary>
+                    <ul className="p-0  menu dropdown-content z-[1] bg-white rounded-lg shadow-2xl lg:w-64 w-40 border-[1px] border-gray-200">
 
                         <li className="relative group">
                             <a className="cursor-pointer" onClick={() => handleCategorySelect('Shirt')}>Shirt</a>
-                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-2 shadow bg-white rounded-box w-40">
+                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-0 bg-white rounded-lg shadow-lg border-[1px] border-gray-200  w-40">
                                 <li><a onClick={() => handleBrandSelect('Zara')}>Zara</a></li>
                                 <li><a onClick={() => handleBrandSelect('Twelve')}>Twelve</a></li>
                             </ul>
@@ -151,7 +156,7 @@ const Home = () => {
 
                         <li className="relative group">
                             <a onClick={() => handleCategorySelect('T-shirt')}>T-shirt</a>
-                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-2 shadow bg-white rounded-box w-40">
+                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-0 bg-white rounded-lg shadow-lg border-[1px] border-gray-200  w-40">
                                 <li><a onClick={() => handleBrandSelect('Supreme')}>Supreme</a></li>
                                 <li><a onClick={() => handleBrandSelect('Tanjim')}>Tanjim</a></li>
                             </ul>
@@ -160,7 +165,7 @@ const Home = () => {
                         <li className="relative group">
                             <a onClick={() => handleCategorySelect('Shoes')}>Shoes</a>
 
-                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-2 shadow bg-white rounded-box w-40">
+                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-0 bg-white rounded-lg shadow-lg border-[1px] border-gray-200  w-40">
                                 <li><a onClick={() => handleBrandSelect('Adidas')}>Adidas</a></li>
                                 <li><a onClick={() => handleBrandSelect('Nike')}>Nike</a></li>
                             </ul>
@@ -170,7 +175,7 @@ const Home = () => {
 
                             <a className="cursor-pointer" onClick={() => handleCategorySelect('Watch')}>Watch</a>
 
-                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-2 shadow bg-white rounded-box w-40">
+                            <ul className="absolute top-0 left-[87%] hidden group-hover:block group-focus-within:block p-0 bg-white rounded-lg shadow-lg border-[1px] border-gray-200  w-40">
                                 <li><a onClick={() => handleBrandSelect('Casio')}>Casio</a></li>
                                 <li><a onClick={() => handleBrandSelect('Chanel')}>Chanel</a></li>
                             </ul>
@@ -178,6 +183,40 @@ const Home = () => {
 
                     </ul>
                 </details>
+
+
+
+
+                <div>
+
+                    {/* price low and high and date newest sorting  */}
+                    <details className="dropdown ">
+                        <summary className="m-1 rounded-full cursor-pointer p-2 text-base border-2 border-gray-600 "> Sort by Price and Date</summary>
+                        <ul className="p-0  menu dropdown-content z-[1] bg-white rounded-lg shadow-2xl lg:w-48 w-40 border-[1px] border-gray-200">
+                            <li><a onClick={() => handleSort('priceAsc')}>price: Low to High</a></li>
+                            <li><a onClick={() => handleSort('priceDesc')}>price: High to Low</a></li>
+                            <li><a onClick={() => handleSort('dateDesc')}>Date: Newest First</a></li>
+                        </ul>
+                    </details>
+
+
+
+                    {/* price range filtering */}
+                    <details className="dropdown ">
+                        <summary className="m-1 rounded-full cursor-pointer p-2 text-base border-2 border-gray-600 ">Sort by Price Range</summary>
+                        <ul className="p-0  menu dropdown-content z-[1] bg-white rounded-lg shadow-2xl lg:w-44 w-40 border-[1px] border-gray-200">
+                            <li><a onClick={() => handlePriceRange('0-50')}>price: ( 0 - 50 )</a></li>
+                            <li><a onClick={() => handlePriceRange('50-100')}>price: ( 50 - 100 )</a></li>
+                            <li><a onClick={() => handlePriceRange('100-150')}>price: ( 100 - 150 )</a></li>
+                        </ul>
+                    </details>
+
+
+
+
+
+
+                </div>
 
 
 
@@ -193,13 +232,8 @@ const Home = () => {
 
 
 
-
-
-
-
             {/*All  products */}
-            <h1>{allProducts.length}</h1>
-            <div className="my-16 px-10 ">
+            <div className="pt-4 px-7 ">
                 <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
                     {
                         allProducts.map((item, index) => <div key={item._id} className="flex flex-col bg-gray-100 pb-8 border-[1px] border-slate-100 hover:shadow-xl">

@@ -1,17 +1,19 @@
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import logo from '../../assets/logo/logo.png'
+
 
 const Footer = () => {
     return (
         <section>
 
-            <div className="bg-[#000000]   lg:mt-28 mt-8">
+            <div className="bg-[#292828]   lg:mt-20 mt-6">
 
-                <footer className="px-4 py-6 divide-y text-white">
-                    <div className="container lg:px-20 md:px-14 flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0  ">
+                <footer className="px-4 py-4 divide-y text-white">
+                    <div className="container lg:px-20 md:px-14 flex flex-col justify-between py-8 mx-auto space-y-8 lg:flex-row lg:space-y-0  ">
                         <div className="lg:w-1/3">
                             <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start mb-3">
                                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-base-200">
-                                    <img className="p-1" src="" alt="" />
+                                    <img className="p-2" src={logo} alt="" />
                                 </div>
                                 <span className="self-center text-4xl  text-white font-semibold">Style<span className="text-orange-500">Savvy</span></span>
                             </a>
@@ -86,7 +88,7 @@ const Footer = () => {
                     </div>
 
 
-                    <div className="py-6 text-sm text-center text-gray-400 ">
+                    <div className="pt-6 text-sm text-center text-gray-400 ">
                         © StyleSavvy.   All Rights Reserved. 2024
                     </div>
                 </footer>
