@@ -113,9 +113,9 @@ const Home = () => {
 
 
             {/* search functionality implement  */}
-            <div className="bg-slate-200 py-2 px-7">
+            <div className="bg-slate-200 py-2 px-7 ">
 
-                <div className="text-center bg-slate-200 ">
+                <div className="text-center bg-slate-200  ">
                     <div className="lg:max-w-xl max-w-sm mx-auto  ">
                         <form onSubmit={handleSearch}>
                             <label className="input input-bordered flex rounded-full items-center  ">
@@ -261,7 +261,7 @@ const Home = () => {
 
                                 <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-600">
                                     <span className="flex justify-center items-center text-2xl text-black font-semibold"><BsCurrencyDollar></BsCurrencyDollar> {item.price}</span>
-                                    <span className="text-base text-blue-500">{item.createdDate}</span>
+                                    <span className="text-base text-blue-500">{item.createdDate.slice(0, 10)}</span>
 
                                 </div>
 
