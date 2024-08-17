@@ -27,7 +27,7 @@ const Login = () => {
 
     const onSubmit = (data) => {
         // console.log(data);
-        console.log(data);
+       
 
         // login user authentication
         logInUser(data.email, data.password)
@@ -57,7 +57,7 @@ const Login = () => {
         <section>
 
 
-            <div className="flex flex-col  justify-center items-center lg:py-20 py-12 bg-[linear-gradient(45deg,rgba(0,0,0,0.2),rgba(0,0,0,0.3)),url(https://i.ibb.co/fH0S3yh/parcel5.jpg)] bg-center bg-cover object-cover object-center  ">
+            <div className="flex flex-col  justify-center items-center lg:py-20 py-12 bg-[linear-gradient(45deg,rgba(0,0,0,0.2),rgba(0,0,0,0.3)),url(https://i.ibb.co/YLzV3SH/bg.jpg)] bg-center bg-cover object-cover object-center  ">
 
 
 

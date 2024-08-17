@@ -13,11 +13,11 @@ const GoogleLogin = () => {
     const navigate = useNavigate();
 
     const handleGoogleLogin = () => {
-        console.log("click")
+        // console.log("click")
 
         googleLogin()
             .then((result) => {
-                console.log(result.user);
+                // console.log(result.user);
                 toast.success("Login Successfully");
                 navigate('/');
             })
