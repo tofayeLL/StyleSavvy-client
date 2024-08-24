@@ -8,6 +8,7 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import ProtectedRoutes from "./ProtectedRoutes";
+import AllProducts from "../Pages/AllProducts/AllProducts";
 
 
 
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
                 path: '/',
                 element: <ProtectedRoutes><Home></Home></ProtectedRoutes>
             },
+            {
+                path: '/allProducts',
+                element: <AllProducts></AllProducts>
+            }
         ]
     },
 

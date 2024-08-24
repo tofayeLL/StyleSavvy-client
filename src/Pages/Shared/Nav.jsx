@@ -46,6 +46,7 @@ const Nav = () => {
                     <a className="font-bold lg:text-4xl md:text-2xl text-xl flex items-center gap-2 "><span><img src={logo} alt="logo loading.." className="w-10  text-orange-600" /></span><span className="text-orange-600"><span className="text-white">Style</span>Savvy</span></a>
 
                 </div>
+              <Link to={'/allProducts'}>All products</Link>
                
 
                 <div className="navbar-end">
