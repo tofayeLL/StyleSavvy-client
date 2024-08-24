@@ -3,7 +3,7 @@ import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const GoogleLogin = () => {
@@ -11,6 +11,8 @@ const GoogleLogin = () => {
     const { googleLogin } = useAuth();
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleGoogleLogin = () => {
         // console.log("click")
@@ -19,7 +21,7 @@ const GoogleLogin = () => {
             .then((result) => {
                 // console.log(result.user);
                 toast.success("Login Successfully");
-                navigate('/');
+                navigate(from, { replace: true });
             })
             .catch((error) => {
                console.log(error.message);

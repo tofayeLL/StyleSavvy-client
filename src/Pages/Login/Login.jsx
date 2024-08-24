@@ -1,5 +1,5 @@
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
@@ -17,6 +17,8 @@ const Login = () => {
     const {logInUser} = useAuth();
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const {
         register,
@@ -35,7 +37,7 @@ const Login = () => {
             // console.log(result.user);
             toast.success("Login Successfully");
             reset();
-            navigate('/');
+            navigate(from, { replace: true });
             
         })
         .catch((error) => {
