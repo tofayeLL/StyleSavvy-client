@@ -3,6 +3,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Rating } from "@smastrom/react-rating";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 const AllProducts = () => {
@@ -20,15 +21,10 @@ const AllProducts = () => {
     })
 
 
-
-
-
-
-
     return (
         <section className="pt-24">
-            <p>{products.length}</p>
-            <div  className="px-4">
+
+            <div className="px-4">
 
 
                 <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
@@ -74,10 +70,12 @@ const AllProducts = () => {
             </div>
 
             <div className="py-8 px-4">
-                <button className="relative  items-center justify-start inline-block px-4 py-2 overflow-hidden font-medium transition-all hover:bg-gray-200 rounded-full bg-blue-500 group">
-                    <span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all  border-gray-200 rounded-full"></span>
-                    <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-blue-600 flex justify-center items-center gap-2">Show All<span><FaArrowRight></FaArrowRight></span></span>
-                </button>
+                <Link to={'/products'}>
+                    <button className="relative  items-center justify-start inline-block px-4 py-2 overflow-hidden font-medium transition-all hover:bg-gray-200 rounded-full bg-blue-500 group">
+                        <span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all  border-gray-200 rounded-full"></span>
+                        <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-blue-600 flex justify-center items-center gap-2">Show All<span><FaArrowRight></FaArrowRight></span></span>
+                    </button>
+                </Link>
             </div>
 
         </section >

@@ -5,12 +5,9 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { BsCurrencyDollar } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
+const Products = () => {
 
-
-
-const Home = () => {
 
     const axiosPublic = useAxiosPublic();
 
@@ -108,7 +105,13 @@ const Home = () => {
 
 
 
+
+
+
+
     return (
+
+
         <section className="pt-20 ">
             {/* <h1>{totalProducts.length}</h1> */}
 
@@ -137,6 +140,10 @@ const Home = () => {
 
             {/* All sort and filter */}
             <div className="flex lg:flex-row flex-wrap    justify-between items-center px-7 lg:pt-16 pt-10">
+
+
+
+
 
                 {/* categorization */}
                 <details className="dropdown">
@@ -231,54 +238,55 @@ const Home = () => {
 
             {/*All  products */}
             <div className="pt-4 px-7 ">
-
-
-
-
                 <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
                     {
-                        allProducts.map((item, index) =>
-                            <Link to={`/productDetails/${item._id}`} key={item._id}>
-                                <div key={item._id} className="flex flex-col bg-gray-100 pb-8 border-[1px] border-slate-100 hover:shadow-xl">
+                        allProducts.map((item, index) => <div key={item._id} className="flex flex-col bg-gray-100 pb-8 border-[1px] border-slate-100 hover:shadow-xl">
 
-                                    <h4 >
-                                        <img alt="" className="object-center object-cover w-full lg:h-96 h-96 dark:bg-gray-500" src={item.productImage} />
-                                    </h4>
+                            <h4 >
+                                <img alt="" className="object-center object-cover w-full lg:h-96 h-96 dark:bg-gray-500" src={item.productImage} />
+                            </h4>
 
-                                    <div className="flex flex-col flex-1 p-4">
-                                        <p className="text-lg">{item.productName}</p>
+                            <div className="flex flex-col flex-1 p-4">
+                                <p className="text-lg">{item.productName}</p>
 
-                                        <p className="text-xs tracking-wider uppercase hover:underline text-blue-500">{item.brandName}</p>
+                                <p className="text-xs tracking-wider uppercase hover:underline text-blue-500">{item.brandName}</p>
 
-                                        <h3 className="flex-1 py-2 text-lg font-semibold leading-snug">{item.description}</h3>
+                                <h3 className="flex-1 py-2 text-lg font-semibold leading-snug">{item.description}</h3>
 
-                                        <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-600">
-                                            <span> <Rating
-                                                style={{ maxWidth: 100 }}
-                                                value={item.ratings}
-                                                readOnly
-                                            /></span>
-                                            <span className="text-base text-blue-500">{item.category}</span>
-
-                                        </div>
-
-                                        <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-600">
-                                            <span className="flex justify-center items-center text-2xl text-black font-semibold"><BsCurrencyDollar></BsCurrencyDollar> {item.price}</span>
-                                            <span className="text-base text-blue-500">{item.createdDate.slice(0, 10)}</span>
-
-                                        </div>
-
-
-                                    </div>
-
-
+                                <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-600">
+                                    <span> <Rating
+                                        style={{ maxWidth: 100 }}
+                                        value={item.ratings}
+                                        readOnly
+                                    /></span>
+                                    <span className="text-base text-blue-500">{item.category}</span>
 
                                 </div>
-                            </Link>)
+
+                                <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-600">
+                                    <span className="flex justify-center items-center text-2xl text-black font-semibold"><BsCurrencyDollar></BsCurrencyDollar> {item.price}</span>
+                                    <span className="text-base text-blue-500">{item.createdDate.slice(0, 10)}</span>
+
+                                </div>
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+                        </div>)
                     }
 
                 </div>
-
 
 
 
@@ -324,7 +332,17 @@ const Home = () => {
 
 
         </section >
+
+
+
+
+
+
+
+
+
+
     );
 };
 
-export default Home;
+export default Products;
