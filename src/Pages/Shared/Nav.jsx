@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -40,14 +40,44 @@ const Nav = () => {
 
 
 
-            <div className="navbar fixed z-10  bg-opacity-40  text-white  bg-[#0070dc] py-5">
+            <div className="navbar fixed z-10  bg-opacity-40  text-white  bg-[#0070dc] py-4">
                 <div className="navbar-start">
-                    
+
                     <a className="font-bold lg:text-4xl md:text-2xl text-xl flex items-center gap-2 "><span><img src={logo} alt="logo loading.." className="w-10  text-orange-600" /></span><span className="text-orange-600"><span className="text-white">Style</span>Savvy</span></a>
 
+
+
                 </div>
-              <Link to={'/allProducts'}>All products</Link>
-               
+
+
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1 space-x-4">
+
+                        <NavLink
+                            className={({ isActive }) =>
+                                isActive ? 'text-orange-500 font-semibold text-lg ' : 'font-semibold text-lg'
+                            }
+                            to={'/'}
+                        >
+                           Home
+                        </NavLink>
+
+
+                        <NavLink
+                            className={({ isActive }) =>
+                                isActive ? 'text-orange-500  font-semibold text-lg' : 'font-semibold text-lg'
+                            }
+                            to={'/allProducts'}
+                        >
+                            All products
+                        </NavLink>
+
+                    </ul>
+                </div>
+
+
+
+
 
                 <div className="navbar-end">
 

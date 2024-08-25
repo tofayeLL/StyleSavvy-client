@@ -63,17 +63,7 @@ const AllProducts = () => {
                                 </div>
 
 
-
-
-
-
                             </div>
-
-
-
-
-
-
 
 
                         </div>)
